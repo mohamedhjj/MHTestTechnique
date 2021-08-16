@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.product.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.product.com" xmlns:intf="http://services.product.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.product.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="deleteAddress">
+    <complexType>
+     <sequence>
+      <element name="codeAddress" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteAddressResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteAddressReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateAddress">
+    <complexType>
+     <sequence>
+      <element name="codeAddress" type="xsd:int"/>
+      <element name="addNum" type="xsd:int"/>
+      <element name="street" type="xsd:string"/>
+      <element name="zipcode" type="xsd:string"/>
+      <element name="merchantcode" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateAddressResponse">
+    <complexType>
+     <sequence>
+      <element name="updateAddressReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createAddress">
+    <complexType>
+     <sequence>
+      <element name="addNum" type="xsd:int"/>
+      <element name="street" type="xsd:string"/>
+      <element name="zipcode" type="xsd:string"/>
+      <element name="merchantcode" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createAddressResponse">
+    <complexType>
+     <sequence>
+      <element name="createAddressReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="updateAddressRequest">
+
+      <wsdl:part element="impl:updateAddress" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteAddressResponse">
+
+      <wsdl:part element="impl:deleteAddressResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateAddressResponse">
+
+      <wsdl:part element="impl:updateAddressResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteAddressRequest">
+
+      <wsdl:part element="impl:deleteAddress" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createAddressRequest">
+
+      <wsdl:part element="impl:createAddress" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createAddressResponse">
+
+      <wsdl:part element="impl:createAddressResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AddressServiceImpl">
+
+      <wsdl:operation name="deleteAddress">
+
+         <wsdl:input message="impl:deleteAddressRequest" name="deleteAddressRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteAddressResponse" name="deleteAddressResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateAddress">
+
+         <wsdl:input message="impl:updateAddressRequest" name="updateAddressRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateAddressResponse" name="updateAddressResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createAddress">
+
+         <wsdl:input message="impl:createAddressRequest" name="createAddressRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createAddressResponse" name="createAddressResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AddressServiceImplSoapBinding" type="impl:AddressServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="deleteAddress">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteAddressRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteAddressResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateAddress">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateAddressRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateAddressResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createAddress">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createAddressRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createAddressResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AddressServiceImplService">
+
+      <wsdl:port binding="impl:AddressServiceImplSoapBinding" name="AddressServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:1010/MHTestTechnique/services/AddressServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.product.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.product.com" xmlns:intf="http://services.product.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.product.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="createAssociate">
+    <complexType>
+     <sequence>
+      <element name="idMerchant" type="xsd:int"/>
+      <element name="idProduct" type="xsd:int"/>
+      <element name="associateDate" type="xsd:date"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createAssociateResponse">
+    <complexType>
+     <sequence>
+      <element name="createAssociateReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="createAssociateRequest">
+
+      <wsdl:part element="impl:createAssociate" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createAssociateResponse">
+
+      <wsdl:part element="impl:createAssociateResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Associate">
+
+      <wsdl:operation name="createAssociate">
+
+         <wsdl:input message="impl:createAssociateRequest" name="createAssociateRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createAssociateResponse" name="createAssociateResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AssociateSoapBinding" type="impl:Associate">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createAssociate">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createAssociateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createAssociateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AssociateService">
+
+      <wsdl:port binding="impl:AssociateSoapBinding" name="Associate">
+
+         <wsdlsoap:address location="http://localhost:1010/MHTestTechnique/services/Associate"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,42 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AddressServiceImplService WSDL service -->
+
+  <service name="AddressServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.product.com"/>
+      <parameter name="wsdlServiceElement" value="AddressServiceImplService"/>
+      <parameter name="schemaQualified" value="http://services.product.com"/>
+      <parameter name="wsdlServicePort" value="AddressServiceImpl"/>
+      <parameter name="className" value="com.product.services.AddressServiceImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="AddressServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="deleteAddress" qname="operNS:deleteAddress" xmlns:operNS="http://services.product.com" returnQName="retNS:deleteAddressReturn" xmlns:retNS="http://services.product.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:codeAddress" xmlns:pns="http://services.product.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="updateAddress" qname="operNS:updateAddress" xmlns:operNS="http://services.product.com" returnQName="retNS:updateAddressReturn" xmlns:retNS="http://services.product.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:codeAddress" xmlns:pns="http://services.product.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:addNum" xmlns:pns="http://services.product.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:street" xmlns:pns="http://services.product.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:zipcode" xmlns:pns="http://services.product.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:merchantcode" xmlns:pns="http://services.product.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="createAddress" qname="operNS:createAddress" xmlns:operNS="http://services.product.com" returnQName="retNS:createAddressReturn" xmlns:retNS="http://services.product.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:addNum" xmlns:pns="http://services.product.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:street" xmlns:pns="http://services.product.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:zipcode" xmlns:pns="http://services.product.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:merchantcode" xmlns:pns="http://services.product.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="updateAddress createAddress deleteAddress"/>
+
+  </service>
+</deployment>

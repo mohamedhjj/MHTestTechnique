@@ -1,0 +1,145 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\asus\Desktop\MH WS\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MHTestTechnique\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="AddressServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="deleteAddress" qname="ns1:deleteAddress" returnQName="ns1:deleteAddressReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://services.product.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:codeAddress" type="xsd:int"/>
+  </ns2:operation>
+  <ns1:operation name="updateAddress" qname="ns2:updateAddress" returnQName="ns2:updateAddressReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://services.product.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:codeAddress" type="xsd:int"/>
+   <ns1:parameter qname="ns2:addNum" type="xsd:int"/>
+   <ns1:parameter qname="ns2:street" type="xsd:string"/>
+   <ns1:parameter qname="ns2:zipcode" type="xsd:string"/>
+   <ns1:parameter qname="ns2:merchantcode" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="createAddress" qname="ns3:createAddress" returnQName="ns3:createAddressReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://services.product.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:addNum" type="xsd:int"/>
+   <ns1:parameter qname="ns3:street" type="xsd:string"/>
+   <ns1:parameter qname="ns3:zipcode" type="xsd:string"/>
+   <ns1:parameter qname="ns3:merchantcode" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="updateAddress createAddress deleteAddress"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="AddressServiceImpl"/>
+  <ns1:parameter name="className" value="com.product.services.AddressServiceImpl"/>
+  <ns1:parameter name="wsdlServicePort" value="AddressServiceImpl"/>
+  <ns1:parameter name="schemaQualified" value="http://services.product.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.product.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="AddressServiceImplService"/>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="MerchantServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="createMerchant" qname="ns4:createMerchant" returnQName="ns4:createMerchantReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://services.product.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:name" type="xsd:string"/>
+   <ns1:parameter qname="ns4:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns4:birthday" type="xsd:date"/>
+  </ns1:operation>
+  <ns1:operation name="deleteMerchant" qname="ns5:deleteMerchant" returnQName="ns5:deleteMerchantReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://services.product.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:codeMerchant" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="updateMerchant" qname="ns6:updateMerchant" returnQName="ns6:updateMerchantReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://services.product.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:codeMerchant" type="xsd:int"/>
+   <ns1:parameter qname="ns6:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns6:name" type="xsd:string"/>
+   <ns1:parameter qname="ns6:birthday" type="xsd:date"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="deleteMerchant createMerchant updateMerchant"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="MerchantServiceImpl"/>
+  <ns1:parameter name="className" value="com.product.services.MerchantServiceImpl"/>
+  <ns1:parameter name="wsdlServicePort" value="MerchantServiceImpl"/>
+  <ns1:parameter name="schemaQualified" value="http://services.product.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.product.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="MerchantServiceImplService"/>
+ </ns1:service>
+ <ns1:service name="Associate" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="createAssociate" qname="ns7:createAssociate" returnQName="ns7:createAssociateReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://services.product.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:idMerchant" type="xsd:int"/>
+   <ns1:parameter qname="ns7:idProduct" type="xsd:int"/>
+   <ns1:parameter qname="ns7:associateDate" type="xsd:date"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="createAssociate"/>
+  <ns1:parameter name="wsdlPortType" value="Associate"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://services.product.com"/>
+  <ns1:parameter name="wsdlServicePort" value="Associate"/>
+  <ns1:parameter name="className" value="com.product.services.Associate"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.product.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="AssociateService"/>
+ </ns1:service>
+ <ns1:service name="ProductServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="createProduct" qname="ns8:createProduct" returnQName="ns8:createProductReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://services.product.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:label" type="xsd:string"/>
+   <ns1:parameter qname="ns8:unitPrice" type="xsd:double"/>
+   <ns1:parameter qname="ns8:currency" type="xsd:string"/>
+   <ns1:parameter qname="ns8:weight" type="xsd:double"/>
+   <ns1:parameter qname="ns8:height" type="xsd:double"/>
+  </ns1:operation>
+  <ns1:operation name="updateProduct" qname="ns9:updateProduct" returnQName="ns9:updateProductReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://services.product.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:codeProduct" type="xsd:int"/>
+   <ns1:parameter qname="ns9:label" type="xsd:string"/>
+   <ns1:parameter qname="ns9:unitPrice" type="xsd:double"/>
+   <ns1:parameter qname="ns9:currency" type="xsd:string"/>
+   <ns1:parameter qname="ns9:weight" type="xsd:double"/>
+   <ns1:parameter qname="ns9:height" type="xsd:double"/>
+  </ns1:operation>
+  <ns1:operation name="deleteProduct" qname="ns10:deleteProduct" returnQName="ns10:deleteProductReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://services.product.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:codeProduct" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="updateProduct createProduct deleteProduct"/>
+  <ns1:parameter name="wsdlPortType" value="ProductServiceImpl"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://services.product.com"/>
+  <ns1:parameter name="wsdlServicePort" value="ProductServiceImpl"/>
+  <ns1:parameter name="className" value="com.product.services.ProductServiceImpl"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.product.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="ProductServiceImplService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

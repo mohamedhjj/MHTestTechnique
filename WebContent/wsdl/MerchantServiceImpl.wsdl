@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.product.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.product.com" xmlns:intf="http://services.product.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.product.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="createMerchant">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="lastName" type="xsd:string"/>
+      <element name="birthday" type="xsd:date"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="createMerchantResponse">
+    <complexType>
+     <sequence>
+      <element name="createMerchantReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteMerchant">
+    <complexType>
+     <sequence>
+      <element name="codeMerchant" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteMerchantResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteMerchantReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateMerchant">
+    <complexType>
+     <sequence>
+      <element name="codeMerchant" type="xsd:int"/>
+      <element name="lastName" type="xsd:string"/>
+      <element name="name" type="xsd:string"/>
+      <element name="birthday" type="xsd:date"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateMerchantResponse">
+    <complexType>
+     <sequence>
+      <element name="updateMerchantReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="deleteMerchantRequest">
+
+      <wsdl:part element="impl:deleteMerchant" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateMerchantRequest">
+
+      <wsdl:part element="impl:updateMerchant" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createMerchantResponse">
+
+      <wsdl:part element="impl:createMerchantResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateMerchantResponse">
+
+      <wsdl:part element="impl:updateMerchantResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="createMerchantRequest">
+
+      <wsdl:part element="impl:createMerchant" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteMerchantResponse">
+
+      <wsdl:part element="impl:deleteMerchantResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="MerchantServiceImpl">
+
+      <wsdl:operation name="createMerchant">
+
+         <wsdl:input message="impl:createMerchantRequest" name="createMerchantRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:createMerchantResponse" name="createMerchantResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteMerchant">
+
+         <wsdl:input message="impl:deleteMerchantRequest" name="deleteMerchantRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteMerchantResponse" name="deleteMerchantResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateMerchant">
+
+         <wsdl:input message="impl:updateMerchantRequest" name="updateMerchantRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateMerchantResponse" name="updateMerchantResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="MerchantServiceImplSoapBinding" type="impl:MerchantServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createMerchant">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createMerchantRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createMerchantResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteMerchant">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteMerchantRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteMerchantResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateMerchant">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateMerchantRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateMerchantResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="MerchantServiceImplService">
+
+      <wsdl:port binding="impl:MerchantServiceImplSoapBinding" name="MerchantServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:1010/MHTestTechnique/services/MerchantServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

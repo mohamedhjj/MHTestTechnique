@@ -1,0 +1,44 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ProductServiceImplService WSDL service -->
+
+  <service name="ProductServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.product.com"/>
+      <parameter name="wsdlServiceElement" value="ProductServiceImplService"/>
+      <parameter name="schemaQualified" value="http://services.product.com"/>
+      <parameter name="wsdlServicePort" value="ProductServiceImpl"/>
+      <parameter name="className" value="com.product.services.ProductServiceImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ProductServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="createProduct" qname="operNS:createProduct" xmlns:operNS="http://services.product.com" returnQName="retNS:createProductReturn" xmlns:retNS="http://services.product.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:label" xmlns:pns="http://services.product.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:unitPrice" xmlns:pns="http://services.product.com" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:currency" xmlns:pns="http://services.product.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:weight" xmlns:pns="http://services.product.com" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:height" xmlns:pns="http://services.product.com" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="updateProduct" qname="operNS:updateProduct" xmlns:operNS="http://services.product.com" returnQName="retNS:updateProductReturn" xmlns:retNS="http://services.product.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:codeProduct" xmlns:pns="http://services.product.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:label" xmlns:pns="http://services.product.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:unitPrice" xmlns:pns="http://services.product.com" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:currency" xmlns:pns="http://services.product.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:weight" xmlns:pns="http://services.product.com" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:height" xmlns:pns="http://services.product.com" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteProduct" qname="operNS:deleteProduct" xmlns:operNS="http://services.product.com" returnQName="retNS:deleteProductReturn" xmlns:retNS="http://services.product.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:codeProduct" xmlns:pns="http://services.product.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="updateProduct createProduct deleteProduct"/>
+
+  </service>
+</deployment>
